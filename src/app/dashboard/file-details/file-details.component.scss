@@ -1,0 +1,100 @@
+.main-upload-page {
+
+    .page-header {
+        .page-title {
+            font-size: 20px;
+            color: #18192DF9;
+            font-weight: 500;
+        }
+
+        .main-bradecrumb {
+            .breadcrumb {
+                display: flex;
+                flex-wrap: wrap;
+                padding: 0px !important;
+                margin-bottom: 1rem;
+                list-style: none;
+                background-color: transparent !important;
+
+                .breadcrumb-item {
+                    a {
+                        color: #18192DF9;
+                        font-size: 14px;
+                        font-weight: 500;
+
+                        &:hover {
+                            color: #18192DF9;
+                            font-size: 14px;
+                            font-weight: 500;
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+/*----file-details-section---*/
+.file-details-section {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #EFF2F5;
+    border-radius: 5px;
+
+    .header-sec {
+        padding: 15px 15px;
+
+        .file-name {
+            color: #18192DF9;
+            font-weight: 500;
+            font-size: 17px;
+        }
+
+        .processed {
+            background: #DFF4EC 0% 0% no-repeat padding-box;
+            border: 1px solid #C0EEDC;
+            border-radius: 5px;
+            color: #18B57B;
+            font-weight: 400;
+            font-size: 13px;
+            padding: 3px 10px;
+            max-width: 90px;
+            text-align: center;
+        }
+    }
+
+    .pdf-file-inner {
+
+        .section-area {
+
+            .title {
+                color: #828191;
+                font-size: 13px;
+                font-weight: 500;
+                padding: 15px 0px;
+                display: inline-block;
+            }
+
+            .content {
+                font-size: 13px;
+                font-weight: 500;
+                color: #18192DF9;
+                padding-top: 15px;
+                padding-bottom: 15px;
+                padding-left: 15px;
+                display: inline-block;
+            }
+        }
+
+    }
+
+}
+
+.reject-btn {
+
+    svg {
+        height: 15px;
+        width: 19px;
+        fill: #828191;
+    }
+}

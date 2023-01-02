@@ -1,0 +1,139 @@
+    <div class="dashboard-top">
+        <div class="row">
+            <div class="col-lg-12">
+                <p class="user-name">Analysis</p>
+                <p class="description">Showing data as on</p>
+                <div class="showing-data-area">
+                    <div class="form-group">
+                        <select class="form-control form-control-sm" (change)="changeDetails($event)">
+                            <option value="today">Today</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="month">Monthly</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--dashboard-panel-->
+    <div class="dashboard-panel">
+        <div class="row">
+            <div class="col-md-3 pr-lg-0">
+                <div class="panel-box d-flex align-items-center">
+                    <div class="icon-view">
+                        <img src="../../assets/images/main-dashboard/Check.svg">
+                    </div>
+                    <div class="desc-view">
+                        <p class="heading">{{analysisDetails?.total_pdf}}</p>
+                        <p class="detail">Total Documents</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 pr-lg-0">
+                <div class="panel-box d-flex align-items-center">
+                    <div class="icon-view">
+                        <img src="../../assets/images/main-dashboard/Check-2.svg">
+                    </div>
+                    <div class="desc-view">
+                        <p class="heading">{{analysisDetails?.processing_data}}</p>
+                        <p class="detail">Processed Files</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 pr-lg-0">
+                <div class="panel-box d-flex align-items-center">
+                    <div class="icon-view">
+                        <img src="../../assets/images/main-dashboard/Check-3.svg">
+                    </div>
+                    <div class="desc-view">
+                        <p class="heading">{{analysisDetails?.in_queue}}</p>
+                        <p class="detail">Unprocessed Files</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel-box d-flex align-items-center">
+                    <div class="icon-view">
+                        <img src="../../assets/images/main-dashboard/Check-8.svg">
+                    </div>
+                    <div class="desc-view">
+                        <p class="heading">{{analysisDetails.average_time_per_page | number : '1.2-2'}} <small
+                                class="min-text">seconds per Page</small></p>
+                        <p class="detail">Avg Processing Time</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--dashboard-panel-->
+
+    <!--grap-section-->
+    <div class="graph mt-4">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="document-count-line-chart">
+                    <div class="title-section">
+                        <div class="row">
+                            <div class="col-lg-7">
+                                <p class="title">Document Count <small>Overview</small></p>
+                            </div>
+                            <div class="col-lg-5 text-right">
+                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-secondary" [ngClass]="{'active':this.status==='today'}" (click)="changeDocumentDetails('today')">Daily</button>
+                                    <button type="button" class="btn btn-secondary" [ngClass]="{'active':this.status==='weekly'}"  (click)="changeDocumentDetails('weekly')">Weekly</button>
+                                    <button type="button" class="btn btn-secondary" [ngClass]="{'active':this.status==='month'}"  (click)="changeDocumentDetails('monthly')">Monthly</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!--bar-chart-area--->
+                            <!-- <google-chart class="chart" [data]="columnChart"></google-chart> -->
+                            <!--bar-chart-area--->
+                        </div>
+                    </div>
+                </div>
+                <!--pie-chart-area--->
+                <div class="pie-chart-area mt-4">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="pie-chart-box">
+                                <p class="title">Document <small>Status</small></p>
+                                <!-- <br> -->
+                                <!-- <div class="desc-view">
+                                    <p class="detail">Total PDF</p>
+                                    <p class="heading">{{newData.data.total_pdf}}</p>
+                                    
+                                </div> -->
+                                <ng-container *ngIf="isDocument">
+                                    <!-- <google-chart [data]="pieChart"></google-chart> -->
+                                </ng-container>
+                                <ng-container  *ngIf="!isDocument">
+                                    <div class="empty-box">
+                                        <p class="text-center">No Data Found</p>
+                                    </div>
+                                </ng-container>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="pie-chart-box">
+                                <p class="title">Validations <small>Performance</small></p>
+                                <ng-container *ngIf="isValidation">
+                                    <!-- <google-chart [data]="pieChart2"></google-chart> -->
+                                </ng-container>
+                                <ng-container *ngIf="!isValidation">
+                                    <div class="empty-box">
+                                        <p class="text-center">No Data Found</p>
+                                    </div>
+                                </ng-container>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--pie-chart-area--->
+            </div>
+        </div>
+    </div>
+    <!--grap-section-->

@@ -1,0 +1,46 @@
+.panel-group{
+  .panel {
+    &.card{
+      border: 1px solid $gray-300;
+      .card-header{
+        border: 0;
+      }
+    }
+    
+    .panel-heading{
+      position: relative;
+      &:after{
+        position: absolute;
+        content: "";
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-right: 2px solid $gray-600;
+        border-top: 2px solid $gray-600;
+        transform: rotate(135deg);
+        right: 20px;
+        top: 50%;
+        margin-top: -7px;
+      }
+      .btn {
+        padding: 0;
+        color: $secondary;
+        &:hover{
+          text-decoration: none;
+        }
+      }
+    }
+    &.panel-open {
+      .panel-heading{
+        &:after{
+          transform: rotate(-45deg);
+          margin-top: -2px;
+        }
+      }
+    }
+    
+  }
+  &> .panel{
+    margin-bottom: 20px;
+  }
+}

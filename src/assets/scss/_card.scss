@@ -1,0 +1,31 @@
+.card{
+  border: 0;
+  border-radius: 4px;
+  .card-body{
+    padding: 20px 20px;
+  }
+  .card-title-outer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    flex-wrap: wrap;
+    .card-title{
+      margin-bottom: 0;
+    }
+  }
+  &.card-bordered{
+    border: 1px solid $gray-200;
+  }
+}
+.page-title{
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h4{
+    margin-bottom: 0;
+  }
+}

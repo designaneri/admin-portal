@@ -1,0 +1,147 @@
+<div class="main-upload-page">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-lg-8">
+                <p class="page-title mb-1">Upload Files</p>
+                <div class="main-bradecrumb">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Upload Files</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-lg-4 text-right">
+                <button type="button" class="btn btn-light" (click)="howfileLooks()">
+                    <img src="../../../assets/images/upload-file/info-cricle-gray.svg" alt="upload icon">
+                    How your file should look like
+                </button>
+            </div>
+        </div>
+    </div>
+    <!--page-content-->
+    <div class="page-content">
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+                    aria-controls="nav-home" aria-selected="true">Bill of Entry</a>
+                <a class="nav-item nav-link ml-4" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+                    aria-controls="nav-profile" aria-selected="false">Shipping Bill</a>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div class="upload-section mt-4">
+                    <div class="uplode-docuemnt">
+                        <p  *ngIf="isValid; else elseBlock">
+                            <span>Upload Documents</span>
+                            <img src="../../../assets/images/upload-file/info-circle-black.svg">
+                            The file size maximum 5 MB.
+                        </p>
+                        <!-- <p>
+                            <span>Upload Documents</span>
+                            <img src="../../../assets/images/upload-file/info-circle-black.svg">
+                            The file size must be up to 1 MB. You can upload maximum 5 files at a time.
+                        </p> -->
+                    </div>
+                    <ng-template #elseBlock>
+                        <p class="error">
+                            <span>Upload Documents</span>
+                            <img src="../../../assets/images/upload-file/info-circle-black.svg">
+                            The file size must be up to 5 MB and You can upload maximum 25 files at a time.
+                        </p>
+                    </ng-template>
+                    <div class="upload-box d-flex justify-content-center d-flex align-items-center" appDragDrop
+                        (fileDropped)="onFileDropped($event)">
+                        <div class="box-inner-box">
+                            <input type="file" #fileDropRef id="fileDropRef" multiple
+                                (change)="fileBrowseHandler($event)" accept=".pdf"/>
+                            <img src="../../../assets/images/upload-file/file-gray.svg" />
+
+                            <p class="text-area mt-3 mb-0">Drop your PDF files here</p>
+                            <p class="text-area mt-0 mb-0">or</p>
+                            <label for="fileDropRef">browse</label>
+                        </div>
+                        <!-- <div class="box-inner">
+                            <input type="file" #fileDropRef id="fileDropRef" multiple />
+                            <img src="../../../assets/images/upload-file/file-gray.svg" />
+                            <p class="text-area mt-2">Drop your PDF files here or browse</p>
+                        </div> -->
+                    </div>
+                    <div class="upload-file-area mt-4">
+                        <div class="upload-file-box mb-2" *ngFor="let file of files; let i = index">
+                            <div class="cancel-btn text-right">
+                                <a (click)="removeCurrentFile(i)">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </a>
+                            </div>
+                            <div class="file-details text-center">
+                                <img src="../../../assets/images/upload-file/file-blue.svg">
+                                <!-- <p class="mt-2">Automatioztionwhiz-1.pdf</p> -->
+                                <!-- <p class="mt-2">{{ file?.name }}</p> -->
+                                <a class="pdf-name-text mt-3" data-toggle="tooltip" data-placement="left" title="{{ file?.name }}">
+                                    {{ file?.name }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-5">
+                        <button type="submit" class="btn btn-primary" [disabled]="files.length == 0" (click)="uploadData()">Submit</button>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade mt-4" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <div class="upload-section mt-4">
+                    <div class="uplode-docuemnt">
+                        <p>
+                            <span>Upload Documents</span>
+                            <img src="../../../assets/images/upload-file/info-circle-black.svg">
+                            The file size must be up to 1 MB.
+                        </p>
+                        <!-- <p>
+                            <span>Upload Documents</span>
+                            <img src="../../../assets/images/upload-file/info-circle-black.svg">
+                            The file size must be up to 1 MB. You can upload maximum 5 files at a time.
+                        </p> -->
+                    </div>
+                    <div class="upload-box d-flex justify-content-center d-flex align-items-center" appDragDrop
+                        (fileDropped)="onFileDropped($event)">
+                        <div class="box-inner-box">
+                            <input type="file" #fileDropRef id="fileDropRef" multiple
+                                (change)="fileBrowseHandler($event)" />
+                            <img src="../../../assets/images/upload-file/file-gray.svg" />
+
+                            <p class="text-area mt-3 mb-0">Drop your PDF files here</p>
+                            <p class="text-area mt-0 mb-0">or</p>
+                            <label for="fileDropRef">browse</label>
+                        </div>
+                        <!-- <div class="box-inner">
+                            <input type="file" #fileDropRef id="fileDropRef" multiple />
+                            <img src="../../../assets/images/upload-file/file-gray.svg" />
+                            <p class="text-area mt-2">Drop your PDF files here or browse</p>
+                        </div> -->
+                    </div>
+                    <div class="upload-file-area mt-4">
+                        <div class="upload-file-box mb-2" *ngFor="let file of files; let i = index">
+                            <div class="cancel-btn text-right">
+                                <a href="#">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </a>
+                            </div>
+                            <div class="file-details text-center">
+                                <img src="../../../assets/images/upload-file/file-blue.svg">
+                                <!-- <p class="mt-2">Automatioztionwhiz-1.pdf</p> -->
+                                <p class="mt-2">{{ file?.name }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right mt-4">
+                        <button type="submit" class="btn btn-primary" (click)="uploadData()">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--page-content-->
+</div>

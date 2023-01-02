@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+body {
+  font-family: 'Lato', sans-serif;
+  color: $body-font;
+  font-size: 14px;
+  line-height: 1.35;
+  overflow-x: hidden; 
+  background-color: $body-bg;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: $primary;
+  font-weight: 500;
+  &:hover{
+    color: $primary;
+  }
+  &.anchor-secondary{
+    color: $secondary;
+  }
+}
+
+body,a,p,div,li,ul,h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, video, audio{
+  outline: none;
+  &:focus{
+      outline: none;
+  }
+}
+small, .small{
+  font-weight: 500;
+}
+
+.main-wrapper {
+  margin-left: 0px;
+  padding: 20px;
+  margin-top: 70px;
+  @include media-breakpoint-up(md) {
+    margin-left: 210px;
+    padding: 20px;
+  }
+}
+.btn.dropdown-toggle{
+  font-weight: 400;
+  &:after{
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-left-width: 5px;
+  }
+}
+.dropdown-menu{
+  padding: 2px 0;
+  .dropdown-item{
+    padding: 8px 15px;
+    font-size: 15px;
+    &:active{
+      background-color: $gray-200;
+    }
+  }
+}

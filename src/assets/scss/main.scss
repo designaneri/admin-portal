@@ -1,0 +1,28 @@
+//bootstrap
+// ---------------------------------------------------
+@import 'vendor/functions';
+@import 'variables';
+@import 'vendor/bootstrap.scss';
+
+
+// plugin 
+
+@import "../../../node_modules/@ng-select/ng-select/scss/default.theme.scss";
+
+//common
+// ---------------------------------------------------
+@import 'cu-mixins';
+@import 'row-grid-helper';
+@import 'buttons';
+@import 'typography';
+@import 'tabs';
+@import 'card';
+@import 'accordion';
+@import 'form';
+@import 'modal';
+@import 'table';
+@import 'datepicker';
+@import 'wizard';
+//pages
+// ---------------------------------------------------
+@import 'general'

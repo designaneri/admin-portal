@@ -1,0 +1,196 @@
+<div class="main-upload-page">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-lg-8">
+                <p class="page-title mb-1">All Files</p>
+                <div class="main-bradecrumb">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">All Files</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-lg-4 text-right">
+                <button type="button" class="btn btn-primary" routerLink="../upload-file">
+                    <img src="../../assets/images/main-dashboard/file-upload.svg" alt="upload icon">
+                    Upload Files
+                </button>
+            </div>
+        </div>
+    </div>
+    <!--page-content-->
+    <div class="page-content">
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+                    aria-controls="nav-home" aria-selected="true">Bill of Entry</a>
+                <a class="nav-item nav-link ml-4" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+                    aria-controls="nav-profile" aria-selected="false">Shipping Bill</a>
+            </div>
+        </nav>
+        
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div class="all-files">
+                    <div class="table-responsive">
+                        <table class="upload-data-table table">
+                            <thead>
+                                <tr>
+                                    <th>File Name</th>
+                                    <th>Uploaded at</th>
+                                    <th>Uploaded by</th>
+                                    <th>Pages</th>
+                                    <th>Status</th>
+                                    <th class="text-center">Reviewed</th>
+                                    <th>Validation</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody >
+                                <!-- <ng-container *ngIf="allFileDetails?.length > 1"> -->
+                                    <tr *ngFor="let item of allFileDetails">
+                                        <td>
+                                            <a class="pdf-name-text" data-toggle="tooltip" data-placement="left" title="{{item?.pdf_name}}"  (click)="openFile(item.orginal_file)">
+                                                {{item?.pdf_name}}
+                                            </a>
+                                        </td>
+                                        <td>{{item?.uploaded_date | date:'MM-dd-YYYY hh:mm a'}}</td>
+                                        <!-- <td>{{item?.uploaded_date | date:'MM-dd-YYYY'}}</td> -->
+                                        <td>{{item?.upload_by}}</td>
+                                        <td>{{item?.pages}}</td>
+                                        <td *ngIf="item?.status == null">
+                                            <div class="status">
+                                                <p class="processing">Processing</p>
+                                            </div>
+                                        </td>
+                                        <td *ngIf="item?.status ==='Success'">
+                                            <div class="status">
+                                                <p class="success">{{item?.status}}</p>
+                                            </div>
+                                        </td>
+                                        <td *ngIf="item?.status === 'Processing'">
+                                            <div class="status">
+                                                <p class="processing">{{item?.status}}</p>
+                                            </div>
+                                        </td>
+                                        <td class="text-center" *ngIf="item?.reveiwed == 'Reviewed'">
+                                            <img src="../../../assets/images/file-details/green-check.svg"
+                                                alt="upload icon">
+                                        </td>
+                                        <td class="text-center" *ngIf="item?.reveiwed == 'Rejected'">
+                                            <img src="../../../assets/images/file-details/red-cancel.svg" alt="upload icon">
+                                        </td>
+                                        <td class="text-center " *ngIf="item?.reveiwed == ''">
+                                            <img src="../../../assets/images/grid-icons/exclamation-triangle.svg">
+                                        </td>
+                                        <td *ngIf="item?.validation == null">
+                                            <div class="validation">
+                                                <p class="pending">Pending</p>
+                                            </div>
+                                        </td>
+                                        <td *ngIf="item?.validation ==='Success'">
+                                            <div class="status">
+                                                <p class="success">{{item?.validation}}</p>
+                                            </div>
+                                        </td>
+                                        <td *ngIf="item?.validation === 'Pending'">
+                                            <div class="validation">
+                                                <p class="pending">{{item?.validation}}</p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="action-btn">
+                                                <ul>
+                                                    <li>
+                                                        <a class="icon-box" [routerLink]="['../file-details',item.id]">
+                                                            <!-- <img src="../../../assets/images/grid-icons/edit.svg"> -->
+                                                            <i class="fa-solid fa-pen-to-square"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li *ngIf="item?.status ==='Success'">
+                                                        <a class="icon-box" (click)="downloadFile(item)">
+                                                            <!-- <i class="fa-solid fa-rotate-right"></i> -->
+                                                            <!-- <i class="fa-solid fa-download" aria-hidden="true"></i> -->
+                                                            <i class="fa-solid fa-download"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="icon-box" (click)="deleteFile(item?.id)">
+                                                            <i class="fa-solid fa-trash"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="icon-box" (click)="reloadData()">
+                                                            <i class="fa-solid fa-arrows-rotate"></i>
+                                                        </a>
+                                                    </li>
+                                                    
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <!-- </ng-container> -->
+                                <!-- <ng-container *ngIf="!allFileDetails?.length">
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>No Record Found</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </ng-container> -->
+                            </tbody>
+                           
+                            <tfoot >
+                                <tr>
+                                    <td colspan="8">
+                                        <div class="text-right mt-5">
+                                            <nav aria-label="Page navigation example">
+
+                                                <!-- <p>Page {{allFileDetails.length}} of {{totalRecord}}</p> -->
+                                                <ul class=" pagination justify-content-end">
+                                                    <li class="page-item">
+                                                        <a class="page-link" aria-label="Previous"
+                                                            (click)="previousPage()">
+                                                            <span aria-hidden="true"
+                                                                style="font-size:16px;color:#000;">&laquo;</span>
+                                                            <span class="sr-only">Previous</span>
+                                                        </a>
+                                                    </li>
+                                                    <!-- <li class="page-item"><a class="page-link" href="#"
+                                                            style="font-size:16px;color:#000;">1</a></li>
+                                                    <li class="page-item"><a class="page-link" href="#"
+                                                            style="font-size:16px;color:#000;">2</a></li>
+                                                    <li class="page-item"><a class="page-link" href="#"
+                                                            style="font-size:16px;color:#000;">3</a></li> -->
+                                                    <li class="page-item">
+                                                        <a class="page-link" aria-label="Next" (click)="nextPage()">
+                                                            <span aria-hidden="true"
+                                                                style="font-size:16px;color:#000;">&raquo;</span>
+                                                            <span class="sr-only">Next</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </tfoot>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade mt-4" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                Empty-content
+            </div>
+        </div>
+    </div>
+    <!--page-content-->
+</div>

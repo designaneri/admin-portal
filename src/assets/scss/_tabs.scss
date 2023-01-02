@@ -1,0 +1,22 @@
+.nav{
+  &.nav-tabs{
+    .nav-item{
+      margin-bottom: 0;
+      .nav-link {
+        color: $gray-1000;
+        border: 0;
+        font-size: 16px;
+        &.active{
+          font-weight: 600;
+          background: transparent;
+          border-bottom: 2px solid $primary;
+        }
+      }
+    }
+  }
+}
+.tab-content{
+  .tab-pane{
+    padding-top: 20px;
+  }
+}

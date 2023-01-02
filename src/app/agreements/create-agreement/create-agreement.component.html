@@ -1,0 +1,159 @@
+<div class="page-title">
+  <h4>Create Agreement</h4>
+</div>
+<div class="card">
+  <div class="card-body">
+    <div class="table-responsive custom-table template-table">
+      <table>
+        <thead>
+          <tr>
+            <!-- <th width="30"></th> -->
+            <th>Template Name</th>
+            <th>Expiry Date</th>
+            <th>Status</th>
+            <th>Approved On</th>
+            <th>Approved By</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <!-- <td>
+              <label class="custom-checkbox no-text" for="option1" >
+                  <input type="checkbox" id="option1" (change)="changeStatus($event,template)">
+                  <span class="checkmark"></span>
+              </label>
+            </td> -->
+            <td>Lorem ipsum</td>
+            <td>12-12-2022</td>
+            <td>
+              <span class="badge badge-success">Active</span>
+            </td>
+            <td>21-12-2022</td>
+            <td>Rajesh Tambe</td>
+            <td>
+              <div class="action-btns">
+                <a href="javascript:void(0)" class="icon-box" title="View Agreement">
+                  <i class="fa-solid fa-eye"></i>
+                </a>
+                <a href="javascript:void(0)" class="icon-box" title="Download Agreement">
+                  <i class="fa-solid fa-download"></i>
+                </a>
+                <a href="javascript:void(0)" class="icon-box" title="Use Template" routerLink="../variable-data">
+                  <i class="fa-solid fa-file-circle-check"></i>
+                </a>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <!-- <td>
+              <label class="custom-checkbox no-text" for="option2">
+                  <input type="checkbox" id="option2" (change)="changeStatus($event,template)">
+                  <span class="checkmark"></span>
+              </label>
+            </td> -->
+            <td>Lorem ipsum</td>
+            <td>21-12-2023</td>
+            <td>
+              <span class="badge badge-success">Active</span>
+            </td>
+            <td>21-12-2022</td>
+            <td>Trishla Sen</td>
+            <td>
+              <div class="action-btns">
+                <a href="javascript:void(0)" class="icon-box" title="View Agreement">
+                  <i class="fa-solid fa-eye"></i>
+                </a>
+                <a href="javascript:void(0)" class="icon-box" title="Download Agreement">
+                  <i class="fa-solid fa-download"></i>
+                </a>
+                <a href="javascript:void(0)" class="icon-box" title="Use Template" routerLink="../variable-data">
+                  <i class="fa-solid fa-file-circle-check"></i>
+                </a>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <!-- <td>
+              <label class="custom-checkbox no-text" for="option3">
+                  <input type="checkbox" id="option3" (change)="changeStatus($event,template)">
+                  <span class="checkmark"></span>
+              </label>
+            </td> -->
+            <td>Lorem ipsum</td>
+            <td>21-12-2023</td>
+            <td>
+              <span class="badge badge-light">Expired</span>
+            </td>
+            <td>21-12-2022</td>
+            <td>Sarah Parker</td>
+            <td>
+              <div class="action-btns">
+                <a href="javascript:void(0)" class="icon-box" title="View Agreement">
+                  <i class="fa-solid fa-eye"></i>
+                </a>
+                <a href="javascript:void(0)" class="icon-box" title="Download Agreement">
+                  <i class="fa-solid fa-download"></i>
+                </a>
+                <a href="javascript:void(0)" class="icon-box" title="Use Template" routerLink="../variable-data">
+                  <i class="fa-solid fa-file-circle-check"></i>
+                </a>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+
+        <tfoot>
+          <tr>
+            <td colspan="8">
+              <div class="text-right mt-3">
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination justify-content-end">
+                    <li class="page-item">
+                      <a class="page-link" aria-label="Previous">
+                        <i class="fa-solid fa-angle-left"></i>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" aria-label="Next">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Variable Data Type</h4>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="hideModal();"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="custom-radio-group stacked type2"> 
+      <label class="custom-radio" for="radiooption1">
+        <input type="radio" id="radiooption1" name="variableType"> Single Entry
+        <span class="checkmark"></span>
+      </label>
+      <label class="custom-radio" for="radiooption2">
+        <input type="radio" id="radiooption2" name="variableType"> Multiple Entry
+        <span class="checkmark"></span>
+    </label>
+    </div>
+    <!-- <button class="btn btn-primary">Hello !!</button> -->
+  </div>
+</ng-template>

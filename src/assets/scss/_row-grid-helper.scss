@@ -1,0 +1,33 @@
+
+.row.row-grid>[class*="col-"]+[class*="col-"] {
+  margin-top: 20px;
+}
+
+@include media-breakpoint-up(xl) {
+  .row.row-grid>[class*="col-xl-"]+[class*="col-xl-"] {
+      margin-top: 0;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .row.row-grid>[class*="col-lg-"]+[class*="col-lg-"] {
+      margin-top: 0;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .row.row-grid>[class*="col-md-"]+[class*="col-md-"] {
+      margin-top: 0;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .row.row-grid>[class*="col-sm-"]+[class*="col-sm-"] {
+      margin-top: 0;
+  }
+}
+@include media-breakpoint-up(xs) {
+  .row.row-grid>[class*="col-xs-"]+[class*="col-xs-"] {
+      margin-top: 0;
+  }
+}

@@ -1,0 +1,110 @@
+<header class="main-header">
+  <div class="container-fluid">
+    <div class="d-flex justify-content-between">
+      <div class="logo d-flex align-items-center">
+        <a routerLink="/dashboard/details" class="logo-outer">
+          <img src="../../../../assets/images/logo.svg" alt="logo" />
+        </a>
+        <a class="hamburger-icon" (click)="toggleMobileMenu()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+      <div class="logout-btn d-flex align-items-center">
+        <div class="btn-group user-menu" dropdown placement="bottom right">
+          <button
+            id="notification-alignment"
+            dropdownToggle
+            type="button"
+            class="btn notification-btn"
+            aria-controls="notification-alignment"
+          >
+          <i class="fa-regular fa-bell"></i>
+          </button>
+          <ul
+            id="notification-alignment"
+            *dropdownMenu
+            class="dropdown-menu dropdown-menu-right"
+            role="menu"
+            aria-labelledby="notification-alignment"
+          >
+            <li role="menuitem">
+              <a (click)="onLogout()" class="dropdown-item">
+                Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="btn-group user-menu" dropdown placement="bottom right">
+          <button
+            id="button-alignment"
+            dropdownToggle
+            type="button"
+            class="btn dropdown-toggle"
+            aria-controls="dropdown-alignment"
+          >
+          <i class="fa-regular fa-user mr-2"></i>
+            John Doe <span class="caret"></span>
+          </button>
+          <ul
+            id="dropdown-alignment"
+            *dropdownMenu
+            class="dropdown-menu dropdown-menu-right"
+            role="menu"
+            aria-labelledby="button-alignment"
+          >
+            <!-- <li role="menuitem">
+              <a class="dropdown-item" href="#">Action</a>
+            </li>
+            <li role="menuitem">
+              <a class="dropdown-item" href="#">Another action</a>
+            </li>
+            <li role="menuitem">
+              <a class="dropdown-item" href="#">Something else here</a>
+            </li> -->
+            <!-- <li class="divider dropdown-divider"></li> -->
+            <li role="menuitem">
+              <a (click)="onLogout()" class="dropdown-item">
+                Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+</header>
+<div class="main-sidebar" [ngClass]="navMenuStatus ? 'nav--open' : ''">
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" (click)="navItem()" routerLink="/dashboard/details" [routerLinkActive]="['active']">
+        <i class="fa fa-home"></i>
+        Dashboard
+      </a>
+    </li>
+    <li class="nav-item parent">
+      <a class="nav-link" (click)="navItem()" routerLink="/templates" [routerLinkActive]="['active']">
+        <i class="fa-solid fa-file-lines"></i>
+        Templates
+      </a>
+    </li>
+    <li class="nav-item parent">
+      <a class="nav-link" (click)="navItem()" routerLink="/agreements" [routerLinkActive]="['active']">
+        <i class="fa-solid fa-file-contract"></i>
+        Agreements
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" (click)="navItem()" routerLink="/profile" [routerLinkActive]="['active']">
+        <i class="fa fa-user-alt"></i>
+        Profile
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" (click)="navItem()" routerLink="/reports" [routerLinkActive]="['active']">
+        <i class="fa-solid fa-chart-simple"></i>
+        Reports
+      </a>
+    </li>
+  </ul>
+</div>

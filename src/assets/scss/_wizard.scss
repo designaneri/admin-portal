@@ -1,0 +1,194 @@
+.ng-wizard-main {
+  counter-reset: link;
+  
+  .nav.nav-tabs{
+    border: 0;
+    background-color: $gray-100;
+    padding: 10px 20px;
+    border-radius: 4px;
+
+    .nav-item{
+      margin-right: 30px;
+      position: relative;
+      @include media-breakpoint-up(sm) {
+        margin-right: 60px;
+      }
+      &:before{
+        position: absolute;
+        content: "";
+        left: 100%;
+        width: 15px;
+        height: 1px;
+        border-bottom: 1px dashed #ddd;
+        top: 50%;
+        @include media-breakpoint-up(sm) {
+          width: 45px;
+        }
+      }
+      &:last-child{
+        margin-right: 0;
+        &:before,&:after{
+          display: none;
+        }
+      }      
+      .nav-link{
+        position: relative;
+        padding-left: 30px;
+        color: $gray-500;
+        counter-increment: link;
+        font-size: 14px;
+        min-height: 35px;
+        @include media-breakpoint-up(lg) {
+            font-size: 16px;
+            padding-left: 50px;
+        }
+        &:before{
+          position: absolute;
+          content: counter(link);
+          left: 0;
+          top: 50%;
+          height: 30px;
+          width: 30px;
+          background: #e5e5e5;
+          margin-top: -15px;
+          border-radius: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        &:after{
+          height: 11px;
+          left: 12px;
+          top: 50%;
+          margin-top: -7px;
+          content: "";
+          position: absolute;
+          width: 6px;
+          border: solid $white;
+          border-width: 0 2px 2px 0;
+          -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+          display: none;
+        }
+        br{
+          display: none;
+        }
+        small{
+          font-size: 100%;
+          display: none;
+          @include media-breakpoint-up(lg) {
+            display: inline-block;
+          }
+        }
+      }
+      &.active{
+        .nav-link{
+          color: $secondary;
+          padding-left: 30px;
+          @include media-breakpoint-up(sm){
+            padding-left: 50px;
+          }
+          &::before{
+            background-color: $secondary;
+            color: $white;
+          }
+          small{
+            display: none;
+            @include media-breakpoint-up(sm) {
+              display: inline-block;
+            }
+          }
+        }
+      }
+      &:after{
+        position: absolute;
+        content: "";
+        left: 100%;
+        width: 15px;
+        height: 1px;
+        border-bottom: 1px solid $secondary;
+        top: 50%;
+        display: none;
+        @include media-breakpoint-up(sm) {
+          width: 45px;
+        }
+      }
+      &.done{
+        .nav-link{
+          color: $secondary;
+          &::before{
+            background-color: $secondary;
+            color: $secondary;
+            text-indent: -9999px;
+          }
+          &::after{
+            display: block;
+          }
+        }
+        &.nav-item{
+          &::after{
+            display: block;
+          }
+          &:last-child{
+            &::after{
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.ng-wizard-toolbar{
+  margin-top: 30px;
+  .ng-wizard-btn-group{
+    margin-right: 0 !important;
+    display: flex;
+    vertical-align: middle;
+    width: 100%;
+    justify-content: space-between;
+    .btn{
+      width: initial;
+      display: inline-block;
+      flex-grow: 0;
+      min-width: 120px;
+      &.ng-wizard-btn-next.disabled{
+        display: none;
+      }
+    }
+    .ng-wizard-btn-prev{
+      background-color: $white;
+      color: $secondary;
+    }
+  }
+  .wizard-finish-btn{
+    min-width: 120px;
+    &.disabled{
+      display: none;
+    }
+  }
+  &.finishAdded{
+    justify-content: space-between !important;
+    .ng-wizard-btn-group{
+      width: initial;
+    }
+    .ng-wizard-btn-group-extra{
+      margin-right: 0 !important;
+    }
+  }
+}
+.ng-wizard-container{
+  min-height: calc(100vh - 322px);
+}
+.wizard-inner-content{
+  &+ .wizard-inner-content{
+    margin-top: 50px;
+  }
+  &.has-form{
+    &+ .has-form{
+      margin-top: 30px;
+    }
+  }
+}

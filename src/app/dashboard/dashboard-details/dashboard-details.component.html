@@ -1,0 +1,271 @@
+<!-- <div class="dashboard-top">
+  <div class="row mb-3">
+    <div class="col-lg-8">
+      <p class="description">Here Are Some Statistics For Your Files!</p>
+    </div>
+    <div class="col-lg-4 text-right">
+      <div class="btn-wrap">
+        <button type="button" class="btn btn-secondary" routerLink="../upload-file">
+                    <i class="fa fa-file-arrow-up mr-3"></i>
+                    Upload Files
+                </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          routerLink="../upload-file"
+        >
+          <i class="fa fa-file-arrow-up mr-3"></i>
+          Create Agreement
+        </button>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!--dashboard-panel-->
+<div class="dashboard-panel">
+  <div class="row">
+    <div class="col-lg-6 col-xl-3 ">
+      <div class="panel-box d-flex align-items-center" routerLink="../all-file">
+        <div class="icon-view">
+            <i class="fa fa-file-alt"></i>
+        </div>
+        <div class="desc-view">
+          <p class="heading">23</p>
+          <p class="detail">Documents Created</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-xl-3">
+      <div class="panel-box d-flex align-items-center">
+        <div class="icon-view">
+            <i class="fa fa-file-invoice"></i>
+        </div>
+        <div class="desc-view">
+          <p class="heading">9</p>
+          <p class="detail">Templates Used</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-xl-3">
+      <div class="panel-box d-flex align-items-center">
+        <div class="icon-view">
+            <i class="fa fa-file-circle-check"></i>
+        </div>
+        <div class="desc-view">
+          <p class="heading">6</p>
+          <p class="detail">Documents Saved</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-xl-3">
+        <a href="javascript:void(0)" class="panel-box d-flex align-items-center  action-btn" routerLink="../../agreements/create-agreement">
+          <div class="icon-view">
+              <i class="fa fa-add"></i>
+          </div>
+          <div class="desc-view">
+            <p class="detail">Create Agreement <br> for E-sign</p>
+          </div>
+        </a>
+      </div>
+    <!-- <div class="col-md-6 col-lg-3">
+            <div class="panel-box d-flex align-items-center">
+                <div class="icon-view">
+                    <img src="../../assets/images/main-dashboard/Check-4.svg">
+                </div>
+                <div class="desc-view">
+                    <p class="heading">{{dashboardDetails?.processing_file}}</p>
+                    <p class="detail">Processing</p>
+                </div>
+            </div>
+        </div> -->
+  </div>
+</div>
+<!-- <div>
+    <p>You can select tabs directly from component</p>
+    <p>
+      <button type="button" class="btn btn-primary btn-sm" (click)="selectTab(1)">Select second tab</button>
+      <button type="button" class="btn btn-primary btn-sm" (click)="selectTab(2)">Select third tab</button>
+    </p>
+    <hr/>
+  
+  </div> -->
+<!-- charts commented -->
+ <div class="row row-grid">
+  <div class="col-xl-6">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title-outer">
+            <h5 class="card-title">Templates Overview</h5>
+            <div class="d-flex date-wrap">
+                <div class="form-group mb-0">
+                    <div class="input-group-icon datepicker-outer">
+                      <i class="far fa-calendar floating-icon"  (click)="dp.toggle()"
+                      [attr.aria-expanded]="dp.isOpen"></i>
+                      <input
+                        onkeydown="return false"
+                        type="text"
+                        placeholder="Start Date"
+                        class="form-control"
+                        #dp="bsDatepicker"
+                        bsDatepicker
+                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', adaptivePosition: true, showWeekNumbers:false  }"
+                        [minDate]="bsMinDate"
+                        [maxDate]="bsMaxDate"
+                      />
+                      
+                    </div>
+                </div>
+                <div class="form-group mb-0">
+                    <div class="input-group-icon datepicker-outer">
+                      <i class="far fa-calendar floating-icon" ></i>
+                      <input
+                        onkeydown="return false"
+                        type="text"
+                        placeholder="End Date"
+                        class="form-control"
+                        #dpEndDate="bsDatepicker"
+                        bsDatepicker
+                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', adaptivePosition: true, showWeekNumbers:false  }"
+                        [minDate]="bsMinDate"
+                        [maxDate]="bsMaxDate"
+                      />
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <div class="chart-height">
+          <div class="canvas-wrap">
+            <canvas
+              baseChart
+              class="chart"
+              [data]="pieChartData"
+              [type]="pieChartType"
+              [options]="pieChartOptions"
+              [plugins]="pieChartPlugins"
+            >
+            </canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-6">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title-outer">
+            <h5 class="card-title">Templates Overview</h5>
+            <div class="d-flex date-wrap">
+                <div class="form-group mb-0">
+                    <div class="input-group-icon datepicker-outer">
+                      <i class="far fa-calendar floating-icon"  (click)="dp.toggle()"
+                      [attr.aria-expanded]="dp.isOpen"></i>
+                      <input
+                        onkeydown="return false"
+                        type="text"
+                        placeholder="Start Date"
+                        class="form-control"
+                        #dp="bsDatepicker"
+                        bsDatepicker
+                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', adaptivePosition: true, showWeekNumbers:false  }"
+                        [minDate]="bsMinDate"
+                        [maxDate]="bsMaxDate"
+                      />
+                    </div>
+                </div>
+                <div class="form-group mb-0">
+                    <div class="input-group-icon datepicker-outer">
+                      <i class="far fa-calendar floating-icon" ></i>
+                      <input
+                        onkeydown="return false"
+                        type="text"
+                        placeholder="End Date"
+                        class="form-control"
+                        #dpEndDate="bsDatepicker"
+                        bsDatepicker
+                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', adaptivePosition: true, showWeekNumbers:false }"
+                        [minDate]="bsMinDate"
+                        [maxDate]="bsMaxDate"
+                      />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="chart-height">
+          <div class="canvas-wrap">
+            <canvas class="chart" baseChart
+                    [data]="barChartData"
+                    [options]="barChartOptions"
+                    [type]="barChartType">
+            </canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- daterange -->
+<!-- <input type="text"  class="form-control" name="daterange" ngxDaterangepickerMd [(ngModel)]="selected" [autoApply]="true"/> -->
+<!-- <div class="card">
+  <div class="card-body">
+    <tabset #staticTabs>
+      <tab heading="Static title">Static content</tab>
+      <tab heading="Static Title 1">Static content 1</tab>
+      <tab heading="Static Title 2">Static content 2</tab>
+      <tab heading="Static Title 3">Static content 3</tab>
+    </tabset>
+    <h1>H1 tag</h1>
+    <h2>H2 tagline</h2>
+    <h3>H3 tag</h3>
+    <h4>H4 tag</h4>
+    <h5>H5 tag</h5>
+    <h6>H6 tag</h6>
+    <button type="button" class="btn btn-primary" (click)="openModal(template)">
+      Create template modal
+    </button>
+    <accordion [isAnimated]="true">
+      <accordion-group heading="Header">
+        This content is straight in the template.
+      </accordion-group>
+      <accordion-group heading="Content 1">
+        <p>Content 1</p>
+      </accordion-group>
+      <accordion-group heading="Content 2">
+        <p>Content 2</p>
+      </accordion-group>
+    </accordion>
+    <ng-template #template>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Modal</h4>
+        <button
+          type="button"
+          class="btn-close close pull-right"
+          aria-label="Close"
+          (click)="modalRef?.hide()"
+        >
+          <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi eius
+          vero voluptatibus totam necessitatibus similique expedita, tenetur,
+          adipisci pariatur magnam quisquam laudantium quia vitae quam repellat
+          porro itaque. Distinctio, saepe!
+        </p>
+        <button class="btn btn-primary">Hello !!</button>
+      </div>
+    </ng-template>
+    <div class="form-group">
+      <label>Username</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter Username"
+        formControlName="email"
+      />
+    </div>
+  </div>
+</div> -->
+
+<!--dashboard-panel-->

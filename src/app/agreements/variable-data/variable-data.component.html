@@ -1,0 +1,880 @@
+<div class="page-title">
+  <h4>Add Variable Data</h4>
+</div>
+<div class="card">
+  <div class="card-body">
+    <ng-wizard [config]="config" (stepChanged)="stepChanged($event)">
+      <ng-wizard-step
+        [description]="'Variable Fields'"
+        [canEnter]="isValidTypeBoolean"
+        [canExit]="isValidFunctionReturnsBoolean.bind(this)"
+      >
+        <div class="row">
+          <div class="col-xl-3 col-lg-4 col-sm-6">
+            <div class="form-group">
+              <label>Agreement Name</label>
+              <input type="text" class="form-control" />
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-sm-6">
+            <div class="form-group">
+              <label>Upload File</label>
+              <div class="custom-file">
+                <input
+                  type="file"
+                  class="custom-file-input"
+                  multiple
+                  id="importFile"
+                  (change)="onFileChange($event)"
+                />
+                <label
+                  class="custom-file-label form-control"
+                  #labelImport
+                  for="importFile"
+                >
+                  {{ fileName ? fileName : " " }}</label
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-sm-6 align-self-end">
+            <div class="form-group">
+              <button class="btn btn-light">Download Sample Excel</button>
+            </div>
+          </div>
+        </div>
+        <p>
+          Would you like to add the entry manually instead of uploading an Excel
+          ?
+          <a
+            href="javascript:void(0)"
+            class="anchor-secondary"
+            (click)="addManualEntry($event)"
+            ><strong> Click here </strong></a
+          >
+        </p>
+        <div *ngIf="manualEntry">
+          <accordion [isAnimated]="true">
+            <accordion-group heading="Data Variable 1">
+              <div class="row">
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                  <div class="form-group">
+                    <label>Owner Name</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                  <div class="form-group">
+                    <label>Mobile No.</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                  <div class="form-group">
+                    <label>Email ID</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                  <div class="form-group">
+                    <label>Firm Name</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                  <div class="form-group">
+                    <label>Owner Address</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                  <div class="form-group">
+                    <label>Zonal Office</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                  <div class="form-group">
+                    <label>Area</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                  <div class="form-group">
+                    <label>SD Amount </label>
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                  <div class="form-group">
+                    <label>Amount in Rs.</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                  <div class="form-group">
+                    <label>From Date </label>
+                    <div class="input-group-icon datepicker-outer">
+                      <i class="far fa-calendar floating-icon"></i>
+                      <input
+                        onkeydown="return false"
+                        type="text"
+                        placeholder=""
+                        class="form-control"
+                        #dpEndDate="bsDatepicker"
+                        bsDatepicker
+                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', adaptivePosition: true, showWeekNumbers:false  }"
+                        [minDate]="bsMinDate"
+                        [maxDate]="bsMaxDate"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                  <div class="form-group">
+                    <label>To Date </label>
+                    <div class="input-group-icon datepicker-outer">
+                      <i class="far fa-calendar floating-icon"></i>
+                      <input
+                        onkeydown="return false"
+                        type="text"
+                        placeholder=""
+                        class="form-control"
+                        #dpEndDate="bsDatepicker"
+                        bsDatepicker
+                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', adaptivePosition: true, showWeekNumbers:false  }"
+                        [minDate]="bsMinDate"
+                        [maxDate]="bsMaxDate"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </accordion-group>
+            <accordion-group heading="Data Variable 2" *ngIf="visible">
+              <div class="row">
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                  <div class="form-group">
+                    <label>Owner Name</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                  <div class="form-group">
+                    <label>Mobile No.</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                  <div class="form-group">
+                    <label>Email ID</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                  <div class="form-group">
+                    <label>Firm Name</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                  <div class="form-group">
+                    <label>Owner Address</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                  <div class="form-group">
+                    <label>Zonal Office</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                  <div class="form-group">
+                    <label>Area</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                  <div class="form-group">
+                    <label>SD Amount </label>
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                  <div class="form-group">
+                    <label>Amount in Rs.</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                  <div class="form-group">
+                    <label>From Date </label>
+                    <div class="input-group-icon datepicker-outer">
+                      <i class="far fa-calendar floating-icon"></i>
+                      <input
+                        onkeydown="return false"
+                        type="text"
+                        placeholder=""
+                        class="form-control"
+                        #dpEndDate="bsDatepicker"
+                        bsDatepicker
+                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', adaptivePosition: true, showWeekNumbers:false  }"
+                        [minDate]="bsMinDate"
+                        [maxDate]="bsMaxDate"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                  <div class="form-group">
+                    <label>To Date </label>
+                    <div class="input-group-icon datepicker-outer">
+                      <i class="far fa-calendar floating-icon"></i>
+                      <input
+                        onkeydown="return false"
+                        type="text"
+                        placeholder=""
+                        class="form-control"
+                        #dpEndDate="bsDatepicker"
+                        bsDatepicker
+                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', adaptivePosition: true }"
+                        [minDate]="bsMinDate"
+                        [maxDate]="bsMaxDate"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </accordion-group>
+          </accordion>
+          <button
+            class="btn btn-light"
+            (click)="addGroupItem($event)"
+          >
+            Add Entry
+          </button>
+        </div>
+
+        <!-- <div class="table-responsive custom-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Owner Name</th>
+                <th>Mobile No.</th>
+                <th>Email ID</th>
+                <th>Firm Name</th>
+                <th>Owner Address</th>
+                <th>Zonal Office</th>
+                <th>Area</th>
+                <th>SD Amount</th>
+                <th>Amount in Rs.</th>
+                <th>From Date</th>
+                <th>To Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="form-group">
+                      <input type="text" class="form-control">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <input type="text" class="form-control">
+                </div>
+                </td>
+                <td> 
+                  <div class="form-group">
+                      <input type="text" class="form-control">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <input type="text" class="form-control">
+                </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                      <input type="text" class="form-control">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <input type="text" class="form-control">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <input type="text" class="form-control">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <input type="text" class="form-control">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                      <input type="text" class="form-control">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <input type="text" class="form-control">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <input type="text" class="form-control">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="form-group">
+                      <input type="text" class="form-control">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <input type="text" class="form-control">
+                </div>
+                </td>
+                <td> 
+                  <div class="form-group">
+                      <input type="text" class="form-control">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <input type="text" class="form-control">
+                </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                      <input type="text" class="form-control">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <input type="text" class="form-control">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <input type="text" class="form-control">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <input type="text" class="form-control">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                      <input type="text" class="form-control">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <input type="text" class="form-control">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <input type="text" class="form-control">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="form-group">
+                      <input type="text" class="form-control">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <input type="text" class="form-control">
+                </div>
+                </td>
+                <td> 
+                  <div class="form-group">
+                      <input type="text" class="form-control">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <input type="text" class="form-control">
+                </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                      <input type="text" class="form-control">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <input type="text" class="form-control">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <input type="text" class="form-control">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <input type="text" class="form-control">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                      <input type="text" class="form-control">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <input type="text" class="form-control">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <input type="text" class="form-control">
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div> -->
+      </ng-wizard-step>
+
+      <ng-wizard-step [description]="'Signing Details'">
+        <div class="wizard-inner-content">
+          <div class="signer-block">
+              <h5 class="mb-3"><strong>Signer 1</strong></h5>
+              <div class="row">
+                <div class="col-xl-2 col-lg-3 col-sm-4">
+                  <div class="form-group">
+                    <label>Signature Type</label>
+                    <ng-select
+                      [items]="signatureTypes"
+                      bindLabel="name"
+                      bindValue="name"
+                      [searchable]="false"
+                      [(ngModel)]="selectedSignatureTypes"
+                    >
+                    </ng-select>
+                  </div>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-sm-4">
+                  <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-sm-4">
+                  <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-sm-4">
+                  <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-sm-4">
+                  <div class="form-group">
+                    <label>Tag Text</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-sm-4 align-self-end">
+                  <div class="form-group">
+                    <button class="btn btn-light"><i class="fa-solid fa-trash"></i></button>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="signer-block" *ngIf="isNewSigner">
+            <h5 class="mb-3"><strong>Signer 2</strong></h5>
+            <div class="row">
+              <div class="col-xl-2 col-lg-3 col-sm-4">
+                <div class="form-group">
+                  <label>Signature Type</label>
+                  <ng-select
+                    [items]="signatureTypes"
+                    bindLabel="name"
+                    bindValue="name"
+                    [searchable]="false"
+                    [(ngModel)]="selectedSignatureTypes"
+                  >
+                  </ng-select>
+                </div>
+              </div>
+              <div class="col-xl-2 col-lg-3 col-sm-4">
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" class="form-control" />
+                </div>
+              </div>
+              <div class="col-xl-2 col-lg-3 col-sm-4">
+                <div class="form-group">
+                  <label>First Name</label>
+                  <input type="text" class="form-control" />
+                </div>
+              </div>
+              <div class="col-xl-2 col-lg-3 col-sm-4">
+                <div class="form-group">
+                  <label>Last Name</label>
+                  <input type="text" class="form-control" />
+                </div>
+              </div>
+              <div class="col-xl-2 col-lg-3 col-sm-4">
+                <div class="form-group">
+                  <label>Tag Text</label>
+                  <input type="text" class="form-control" />
+                </div>
+              </div>
+              <div class="col-xl-2 col-lg-3 col-sm-4 align-self-end">
+                <div class="form-group">
+                  <button class="btn btn-light"><i class="fa-solid fa-trash"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-light" (click)="addSigner($event)">Add Signer</button>
+        </div>
+        <div class="wizard-inner-content">
+          <h5 class="mb-3"><strong>UTCL Signer 1</strong></h5>
+          <div class="row">
+            <div class="col-xl-2 col-lg-3 col-sm-4">
+              <div class="form-group">
+                <label>Signature Type</label>
+                <ng-select
+                  [items]="signatureTypes"
+                  bindLabel="name"
+                  bindValue="name"
+                  [searchable]="false"
+                  [(ngModel)]="selectedSignatureTypes"
+                >
+                </ng-select>
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-sm-4">
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-sm-4">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-sm-4">
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-sm-4">
+              <div class="form-group">
+                <label>Tag Text</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-sm-4 align-self-end">
+              <div class="form-group">
+                <button class="btn btn-light"><i class="fa-solid fa-trash"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="signer-block" *ngIf="isNewUTCLSigner">
+            <h5 class="mb-3"><strong>UTCL Signer 2</strong></h5>
+            <div class="row">
+              <div class="col-xl-2 col-lg-3 col-sm-4">
+                <div class="form-group">
+                  <label>Signature Type</label>
+                  <ng-select
+                    [items]="signatureTypes"
+                    bindLabel="name"
+                    bindValue="name"
+                    [searchable]="false"
+                    [(ngModel)]="selectedSignatureTypes"
+                  >
+                  </ng-select>
+                </div>
+              </div>
+              <div class="col-xl-2 col-lg-3 col-sm-4">
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" class="form-control" />
+                </div>
+              </div>
+              <div class="col-xl-2 col-lg-3 col-sm-4">
+                <div class="form-group">
+                  <label>First Name</label>
+                  <input type="text" class="form-control" />
+                </div>
+              </div>
+              <div class="col-xl-2 col-lg-3 col-sm-4">
+                <div class="form-group">
+                  <label>Last Name</label>
+                  <input type="text" class="form-control" />
+                </div>
+              </div>
+              <div class="col-xl-2 col-lg-3 col-sm-4">
+                <div class="form-group">
+                  <label>Tag Text</label>
+                  <input type="text" class="form-control" />
+                </div>
+              </div>
+              <div class="col-xl-2 col-lg-3 col-sm-4 align-self-end">
+                <div class="form-group">
+                  <button class="btn btn-light"><i class="fa-solid fa-trash"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-light" (click)="addUTCLSigner($event)">Add UTCL Signer</button>
+        </div>
+        <div class="wizard-inner-content">
+          <h5 class="mb-3"><strong>Observer Details</strong></h5>
+          <div class="row">
+            <div class="col-xl-4 col-lg-3 col-sm-4">
+              <div class="form-group">
+                <label>Observer 1 Email</label>
+                <input type="email" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-3 col-sm-4">
+              <div class="form-group">
+                <label>Observer 2 Email</label>
+                <input type="email" class="form-control" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-wizard-step>
+
+      <ng-wizard-step
+        [description]="'E-Stamp Details'"
+        [canEnter]="isValidFunctionReturnsObservable.bind(this)"
+        [canExit]="isValidFunctionReturnsBoolean.bind(this)"
+      >
+        <div class="wizard-inner-content has-form">
+          <div class="row">
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="form-group">
+                <label>Stamp State</label>
+                <ng-select
+                  [items]="stampState"
+                  bindLabel="name"
+                  bindValue="name"
+                  [searchable]="false"
+                  [(ngModel)]="selectedStampState"
+                  (change)="onStampStateChange($event)"
+                >
+                </ng-select>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="form-group">
+                <label>Stamp Duty Amount</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="form-group">
+                <label>Consideration Amount</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6" *ngIf="isStampState">
+              <div class="form-group">
+                <label>Firm Name</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6" *ngIf="isMaharashtraStamp">
+              <div class="form-group">
+                <label>Stamp Type</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6" *ngIf="isMaharashtraStamp">
+              <div class="form-group">
+                <label>Document Category</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6" *ngIf="isMaharashtraStamp">
+              <div class="form-group">
+                <label>Document Reference No.</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6" *ngIf="isMaharashtraStamp">
+              <div class="form-group">
+                <label>District</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6" *ngIf="isMaharashtraStamp">
+              <div class="form-group">
+                <label>Office Name / Sub-Registrar</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="wizard-inner-content has-form">
+          <h5 class="mb-3"><strong>First Party Details</strong></h5>
+          <div class="row">
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="form-group">
+                <label>Address</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="form-group">
+                <label>City</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="form-group">
+                <label>State</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="form-group">
+                <label>Postal Code</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="form-group">
+                <label>Phone No.</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="wizard-inner-content has-form">
+          <h5 class="mb-3"><strong>Second Party Details</strong></h5>
+          <div class="row">
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="form-group">
+                <label>Address</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="form-group">
+                <label>City</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="form-group">
+                <label>State</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="form-group">
+                <label>Postal Code</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="form-group">
+                <label>Phone No.</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="wizard-inner-content has-form" *ngIf="isMaharashtraStamp">
+          <h5 class="mb-3"><strong>Property Description</strong></h5>
+          <div class="row">
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="form-group">
+                <label>Address</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="form-group">
+                <label>Address</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="form-group">
+                <label>Road</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="form-group">
+                <label>District</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="form-group">
+                <label>Town / Village</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="form-group">
+                <label>State</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="form-group">
+                <label>Pincode</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="form-group">
+                <label>Property Area Unit</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="form-group">
+                <label>Property Area</label>
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-wizard-step>
+    </ng-wizard>
+  </div>
+</div>

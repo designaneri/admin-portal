@@ -1,0 +1,105 @@
+@import "../../../assets/scss/variables";
+/*----dashboard-top----*/
+
+.dashboard-top {
+
+    .user-name {
+        font-size: 18px;
+        font-weight: 500;
+        color: #18192DF9;
+        margin-bottom: 0px;
+        line-height: 1.5;
+    }
+
+    .description {
+        font-size: 13px;
+        font-weight: 500;
+        color: #18192DF9;
+    }
+}
+
+/*------dashboard-pane------*/
+.dashboard-panel {
+    .panel-box {
+        background: #FDFDFD 0% 0% no-repeat padding-box;
+        border: 1px solid #F5F5F5;
+        border-radius: 5px;
+        padding: 20px;
+        height: 100px;
+        cursor: pointer;
+        transition: all .25s ease;
+        margin-bottom: 20px;
+        &:hover {
+            // transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 14px 24px rgb(62 57 107 / 7%);
+        }
+
+
+        .icon-view {
+            height: 45px;
+            width: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f3efff;
+            border-radius: 3px;
+            font-size: 16px;
+
+        }
+
+        .desc-view {
+            margin-left: 22px;
+            padding-top: 9px;
+
+            .heading {
+                font-size: 18px;
+                font-weight: 500;
+                color: #1C2947;
+                margin-bottom: 7px;
+                line-height: 0.5;
+            }
+
+            .detail {
+                font-size: 13px;
+                font-weight: 400;
+                color: #828191;
+                margin-bottom: 0px;
+            }
+        }
+        &.action-btn{
+            .icon-view{
+                background-color: $primary;
+                border-color: $primary;
+                color: $white;
+            }
+            .desc-view {
+                padding-top: 2px;
+                .detail {
+                    color: $black;
+                }
+            }
+            &:hover{
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+
+
+// canvas styles
+
+.chart-height {
+    min-height: 285px;
+    height: 285px;
+}
+.canvas-wrap {
+    display: flex;
+    height: 100%;
+    align-self: center;
+    justify-content: center;
+
+    .canvas {
+        align-self: center;
+    }
+}

@@ -1,0 +1,63 @@
+/*----dashboard-top----*/
+.dashboard-top {
+    .user-name {
+        font-size: 18px;
+        font-weight: 500;
+        color: #18192DF9;
+        margin-bottom: 0px;
+        line-height: 1.5;
+    }
+
+    .description {
+        font-size: 13px;
+        font-weight: 500;
+        color: #18192DF9;
+    }
+}
+
+/*------dashboard-panel------*/
+.dashboard-panel {
+    .panel-box {
+        background: #FDFDFD 0% 0% no-repeat padding-box;
+        border: 1px solid #F5F5F5;
+        border-radius: 4px;
+        padding: 20px;
+        height: 100px;
+        cursor: pointer;
+        transition: all .25s ease;
+
+        &:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 14px 24px rgb(62 57 107 / 7%);
+        }
+
+
+        .icon-view {
+            img {
+                height: 40px;
+                width: 40px;
+            }
+
+        }
+
+        .desc-view {
+            margin-left: 22px;
+            padding-top: 9px;
+
+            .heading {
+                font-size: 18px;
+                font-weight: 500;
+                color: #1C2947;
+                margin-bottom: 7px;
+                line-height: 0.5;
+            }
+
+            .detail {
+                font-size: 13px;
+                font-weight: 400;
+                color: #828191;
+                margin-bottom: 0px;
+            }
+        }
+    }
+}
