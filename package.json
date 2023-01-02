@@ -6,8 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "deploy": "surge --project ./ --domain e-signature-portal.surge.sh"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
@@ -28,6 +27,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.2.1",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@ng-select/ng-select": "^9.1.0",
+    "angular-cli-ghpages": "^1.0.5",
     "bootstrap": "^4.5.0",
     "chart.js": "^4.1.1",
     "chartjs-plugin-datalabels": "^2.2.0",
