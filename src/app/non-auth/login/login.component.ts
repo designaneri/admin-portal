@@ -39,12 +39,12 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-
-    this.appService.loginUser(this.loginForm.value).subscribe((data: any) => {
-      this.appService.setUserDetails(data);
-      this.router.navigate(['/dashboard']);
-    }, (error: any) => {
-    })
+    this.router.navigate(['/dashboard']);
+    // this.appService.loginUser(this.loginForm.value).subscribe((data: any) => {
+    //   this.appService.setUserDetails(data);
+    //   this.router.navigate(['/dashboard']);
+    // }, (error: any) => {
+    // })
   }
 
 }

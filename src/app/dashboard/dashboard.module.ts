@@ -4,15 +4,9 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardDetailsComponent } from './dashboard-details/dashboard-details.component';
-import { UploadFileComponent } from './upload-file/upload-file.component';
-import { AllFilesComponent } from './all-files/all-files.component';
-import { FileDetailsComponent } from './file-details/file-details.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
-import { DashboardService } from './services/dashboard.service';
-import { FilesService } from './services/files.service';
 import { HttpClientModule} from '@angular/common/http';
-import { DragDropDirective } from './directives/drag-drop.directive';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -26,10 +20,6 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
   declarations: [
     DashboardComponent,
     DashboardDetailsComponent,
-    UploadFileComponent,
-    AllFilesComponent,
-    FileDetailsComponent,
-    DragDropDirective,
     
   ],
   imports: [
@@ -48,8 +38,6 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     // Ng2GoogleChartsModule
   ],
   providers:[
-    DashboardService,
-    FilesService,
     DatePipe
   ]
 })

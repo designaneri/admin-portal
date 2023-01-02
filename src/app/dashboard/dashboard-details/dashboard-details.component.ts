@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { DashboardService } from '../services/dashboard.service';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { AccordionConfig } from 'ngx-bootstrap/accordion';
@@ -31,7 +30,6 @@ export class DashboardDetailsComponent implements OnInit {
   // public pieChart: GoogleChartInterface | any;
 
   constructor(
-    private dashboardService: DashboardService,
     private appService: AuthService,
     private modalService: BsModalService) {
     this.userDetails = this.appService.getUserDetails();

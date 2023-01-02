@@ -33,11 +33,11 @@ export class AuthService {
   }
 
   loginUser(loginDetail: any) {
-    return this.httpService.httpPostRequest(`${environment.baseUrl}login/`, loginDetail);
+    // return this.httpService.httpPostRequest(`${environment.baseUrl}login/`, loginDetail);
   }
 
   registerUser(userDetails: any) {
-       return this.httpService.httpPostRequest(`${environment.baseUrl}register/`, userDetails)
+      //  return this.httpService.httpPostRequest(`${environment.baseUrl}register/`, userDetails)
   }
 
 }
